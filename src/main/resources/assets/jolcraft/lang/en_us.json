@@ -1,0 +1,69 @@
+{
+  "item.jolcraft.coin": "Gold Coin",
+  "item.jolcraft.coin_mould": "Coin Mould",
+  "item.jolcraft.spirit_fox_spawn_egg": "Spirit Fox Spawn Egg",
+  "item.jolcraft.dwarf_spawn_egg": "Dwarf Spawn Egg",
+
+  "block.jolcraft.coin_block": "Coin Pile",
+  "block.jolcraft.coin_press": "Coin Press",
+  "block.jolcraft.alchemist_workbench": "Alchemist Workbench",
+
+
+  "creativemodetab.jolcraft_tab": "JolCraft",
+
+  "entity.minecraft.villager.jolcraft.banker": "Banker",
+
+  "entity.jolcraft.dwarf.armorer": "Armorer",
+  "entity.jolcraft.dwarf.butcher": "Butcher",
+  "entity.jolcraft.dwarf.cartographer": "Cartographer",
+  "entity.jolcraft.dwarf.cleric": "Cleric",
+  "entity.jolcraft.dwarf.farmer": "Farmer",
+  "entity.jolcraft.dwarf.fisherman": "Fisherman",
+  "entity.jolcraft.dwarf.fletcher": "Fletcher",
+  "entity.jolcraft.dwarf.leatherworker": "Leatherworker",
+  "entity.jolcraft.dwarf.librarian": "Librarian",
+  "entity.jolcraft.dwarf.mason": "Mason",
+  "entity.jolcraft.dwarf.nitwit": "Nitwit",
+  "entity.jolcraft.dwarf.shepherd": "Shepherd",
+  "entity.jolcraft.dwarf.toolsmith": "Toolsmith",
+  "entity.jolcraft.dwarf.weaponsmith": "Weaponsmith",
+  "entity.jolcraft.dwarf.jolcraft.banker": "Banker",
+
+
+  "entity.minecraft.villager.jolcraft.alchemist": "Alchemist",
+  "entity.jolcraft.dwarf.jolcraft.alchemist": "Alchemist",
+  "entity.jolcraft.dwarf_alchemist.jolcraft.alchemist": "Alchemist",
+
+  "entity.minecraft.villager.jolcraft.artisan": "Artisan",
+  "entity.jolcraft.dwarf.jolcraft.artisan": "Artisan",
+  "entity.jolcraft.dwarf_artisan.jolcraft.artisan": "Artisan",
+
+  "entity.minecraft.villager.jolcraft.blacksmith": "Blacksmith",
+  "entity.jolcraft.dwarf.jolcraft.blacksmith": "Blacksmith",
+  "entity.jolcraft.dwarf_blacksmith.jolcraft.blacksmith": "Blacksmith",
+
+  "entity.minecraft.villager.jolcraft.enchanter": "Enchanter",
+  "entity.jolcraft.dwarf.jolcraft.enchanter": "Enchanter",
+  "entity.jolcraft.dwarf_enchanter.jolcraft.enchanter": "Enchanter",
+
+  "entity.minecraft.villager.jolcraft.smelter": "Smelter",
+  "entity.jolcraft.dwarf.jolcraft.smelter": "Smelter",
+  "entity.jolcraft.dwarf_smelter.jolcraft.smelter": "Smelter",
+
+  "entity.minecraft.villager.jolcraft.warrior": "Warrior",
+  "entity.jolcraft.dwarf.jolcraft.warrior": "Warrior",
+  "entity.jolcraft.dwarf_warrior.jolcraft.warrior": "Warrior",
+
+  "entity.minecraft.villager.jolcraft.miner": "Miner",
+  "entity.jolcraft.dwarf.jolcraft.miner": "Miner",
+  "entity.jolcraft.dwarf_miner.jolcraft.miner": "Miner",
+
+
+  "sounds.jolcraft.dwarf_idle": "Dwarf mumbles",
+  "sounds.jolcraft.dwarf_hit": "Dwarf groans",
+  "sounds.jolcraft.dwarf_death": "Dwarf lets out a last groan",
+  "sounds.jolcraft.dwarf_haggle": "Dwarf haggles",
+  "sounds.jolcraft.dwarf_yes": "Dwarf says yes",
+  "sounds.jolcraft.dwarf_no": "Dwarf says no",
+  "sounds.jolcraft.dwarf_miner": "Dwarf swings his pickaxe"
+}

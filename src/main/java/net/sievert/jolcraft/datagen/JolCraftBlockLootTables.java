@@ -21,9 +21,18 @@ public class JolCraftBlockLootTables extends BlockLootSubProvider {
         dropSelf(JolCraftBlocks.COIN_PRESS.get());
         dropSelf(JolCraftBlocks.ALCHEMIST_WORKBENCH.get());
 
+        dropSelf(JolCraftBlocks.GEM_LOG.get());
+        dropSelf(JolCraftBlocks.GEM_WOOD.get());
+        dropSelf(JolCraftBlocks.GEM_LOG_CROSS.get());
+        dropSelf(JolCraftBlocks.GEM_LOG_BRANCH.get());
+        dropSelf(JolCraftBlocks.GEM_PLANKS.get());
+        dropSelf(JolCraftBlocks.STRIPPED_GEM_LOG.get());
+        dropSelf(JolCraftBlocks.STRIPPED_GEM_WOOD.get());
+        dropSelf(JolCraftBlocks.GEM_SAPLING.get());
+
         //Ore
-       /* add(ModBlocks.BLACK_OPAL_ORE.get(),
-                (block) -> createOreDrop(ModBlocks.BLACK_OPAL_ORE.get(), ModItems.RAW_BLACK_OPAL.get()));*/
+       add(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE.get(),
+                (block) -> createOreDrop(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE.get(), JolCraftItems.UNREFINED_DWARVEN_METAL.get()));
 
     }
 

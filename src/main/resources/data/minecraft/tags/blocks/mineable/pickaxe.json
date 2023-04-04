@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "jolcraft:coin_block"
+    "jolcraft:coin_block",
+    "jolcraft:dwarven_metal_deepslate_ore",
+    "jolcraft:dwarven_gem_block",
+    "jolcraft:dwarven_gem_cluster"
   ]
 }

@@ -1,12 +1,14 @@
 {
   "item.jolcraft.coin": "Gold Coin",
   "item.jolcraft.coin_mould": "Coin Mould",
+  "item.jolcraft.unrefined_dwarven_metal": "Unrefined Dwarven Metal",
   "item.jolcraft.spirit_fox_spawn_egg": "Spirit Fox Spawn Egg",
   "item.jolcraft.dwarf_spawn_egg": "Dwarf Spawn Egg",
 
   "block.jolcraft.coin_block": "Coin Pile",
   "block.jolcraft.coin_press": "Coin Press",
   "block.jolcraft.alchemist_workbench": "Alchemist Workbench",
+  "block.jolcraft.dwarven_metal_deepslate_ore": "Deepslate Dwarven Metal Ore",
 
 
   "creativemodetab.jolcraft_tab": "JolCraft",

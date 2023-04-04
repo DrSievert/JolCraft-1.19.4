@@ -1,5 +1,6 @@
 package net.sievert.jolcraft.datagen;
 
+import net.minecraft.core.HolderLookup;
 import net.sievert.jolcraft.JolCraft;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -8,6 +9,8 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.concurrent.CompletableFuture;
+
 @Mod.EventBusSubscriber(modid = JolCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class JolCraftDataGenerators {
     @SubscribeEvent
@@ -15,10 +18,13 @@ public class JolCraftDataGenerators {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-       generator.addProvider(true, new JolCraftRecipeProvider(packOutput));
+        generator.addProvider(true, new JolCraftRecipeProvider(packOutput));
        generator.addProvider(true, JolCraftLootTableProvider.create(packOutput));
        generator.addProvider(true, new JolCraftBlockStateProvider(packOutput, existingFileHelper));
        generator.addProvider(true, new JolCraftItemModelProvider(packOutput, existingFileHelper));
+       generator.addProvider(event.includeServer(), new JolCraftWorldGenProvider(packOutput, lookupProvider));
+
     }
 }

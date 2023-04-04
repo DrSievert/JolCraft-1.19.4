@@ -1,5 +1,7 @@
 package net.sievert.jolcraft;
 
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.sievert.jolcraft.entity.client.dwarf.artisan.DwarfArtisanRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.blacksmith.DwarfBlacksmithRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.enchanter.DwarfEnchanterRenderer;
@@ -86,7 +88,24 @@ public class JolCraft
             event.accept(JolCraftItems.COIN_MOULD);
             event.accept(JolCraftBlocks.COIN_BLOCK);
             event.accept(JolCraftBlocks.COIN_PRESS);
+
             event.accept(JolCraftBlocks.ALCHEMIST_WORKBENCH);
+
+            event.accept(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE);
+            event.accept(JolCraftItems.UNREFINED_DWARVEN_METAL);
+
+            event.accept(JolCraftBlocks.GEM_LOG);
+            event.accept(JolCraftBlocks.GEM_WOOD);
+            event.accept(JolCraftBlocks.GEM_LOG_CROSS);
+            event.accept(JolCraftBlocks.GEM_LOG_BRANCH);
+            event.accept(JolCraftBlocks.STRIPPED_GEM_LOG);
+            event.accept(JolCraftBlocks.STRIPPED_GEM_WOOD);
+            event.accept(JolCraftBlocks.GEM_PLANKS);
+            event.accept(JolCraftBlocks.GEM_SAPLING);
+            event.accept(JolCraftBlocks.DWARVEN_GEM_BLOCK);
+            event.accept(JolCraftBlocks.DWARVEN_GEM_CLUSTER);
+            event.accept(JolCraftItems.DWARVEN_GEM_SHARD);
+
         }
         if(event.getTab() == CreativeModeTabs.SPAWN_EGGS) {
             event.accept(JolCraftItems.SPIRIT_FOX_SPAWN_EGG);
@@ -113,6 +132,8 @@ public class JolCraft
             EntityRenderers.register(JolCraftEntities.DWARF_SMELTER.get(), DwarfSmelterRenderer::new);
             EntityRenderers.register(JolCraftEntities.DWARF_WARRIOR.get(), DwarfWarriorRenderer::new);
             EntityRenderers.register(JolCraftEntities.DWARF_MINER.get(), DwarfMinerRenderer::new);
+            ItemBlockRenderTypes.setRenderLayer(JolCraftBlocks.DWARVEN_GEM_CLUSTER.get(), RenderType.cutout());
+
 
         }
     }

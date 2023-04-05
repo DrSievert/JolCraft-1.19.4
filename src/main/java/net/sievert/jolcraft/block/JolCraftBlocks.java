@@ -111,7 +111,7 @@ public class JolCraftBlocks {
             () -> new SaplingBlock(new GemTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
     public static final RegistryObject<Block> DWARVEN_GEM_CLUSTER = registerBlock("dwarven_gem_cluster",
-            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of(Material.AMETHYST).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(2F).lightLevel((p_152632_) -> {
+            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of(Material.AMETHYST).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).requiresCorrectToolForDrops().strength(2F).lightLevel((p_152632_) -> {
                 return 5;
             })));
 

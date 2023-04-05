@@ -18,13 +18,11 @@ public class JolCraftDataGenerators {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         generator.addProvider(true, new JolCraftRecipeProvider(packOutput));
        generator.addProvider(true, JolCraftLootTableProvider.create(packOutput));
        generator.addProvider(true, new JolCraftBlockStateProvider(packOutput, existingFileHelper));
        generator.addProvider(true, new JolCraftItemModelProvider(packOutput, existingFileHelper));
-       generator.addProvider(event.includeServer(), new JolCraftWorldGenProvider(packOutput, lookupProvider));
 
     }
 }

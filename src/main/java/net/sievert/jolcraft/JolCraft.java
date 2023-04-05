@@ -33,6 +33,7 @@ import net.sievert.jolcraft.screen.CoinPressScreen;
 import net.sievert.jolcraft.screen.JolCraftMenuTypes;
 import net.sievert.jolcraft.structures.JolCraftStructures;
 import net.sievert.jolcraft.villager.JolCraftVillagers;
+import net.sievert.jolcraft.world.features.JolCraftFeatures;
 import net.sievert.jolcraft.world.processors.JolCraftProcessors;
 import software.bernie.geckolib.GeckoLib;
 
@@ -61,6 +62,8 @@ public class JolCraft
         JolCraftMenuTypes.register(modEventBus);
 
         JolCraftSounds.register(modEventBus);
+
+        JolCraftFeatures.register(modEventBus);
 
         JolCraftStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
 

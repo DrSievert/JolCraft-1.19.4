@@ -28,6 +28,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
+import net.sievert.jolcraft.block.JolCraftBlocks;
 import net.sievert.jolcraft.sound.JolCraftSounds;
 import net.sievert.jolcraft.villager.JolCraftVillagers;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -91,12 +92,6 @@ public class DwarfMiner extends DwarfEntity {
         super.aiStep();
     }
 
-
-
-
-
-
-
     protected boolean isMineableArea(LevelReader levelReader, BlockPos pos) {
         if(levelReader.getBlockState(pos.east()).is(Blocks.DIAMOND_ORE)) {
             return true;
@@ -110,16 +105,16 @@ public class DwarfMiner extends DwarfEntity {
         if(levelReader.getBlockState(pos.south()).is(Blocks.DIAMOND_ORE))    {
             return true;
         }
-        if(levelReader.getBlockState(pos.east()).is(Blocks.EMERALD_ORE)) {
+        if(levelReader.getBlockState(pos.east()).is(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE.get())) {
             return true;
         }
-        if(levelReader.getBlockState(pos.west()).is(Blocks.EMERALD_ORE))    {
+        if(levelReader.getBlockState(pos.west()).is(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE.get()))    {
             return true;
         }
-        if(levelReader.getBlockState(pos.north()).is(Blocks.EMERALD_ORE))    {
+        if(levelReader.getBlockState(pos.north()).is(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE.get()))    {
             return true;
         }
-        if(levelReader.getBlockState(pos.south()).is(Blocks.EMERALD_ORE))    {
+        if(levelReader.getBlockState(pos.south()).is(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE.get()))    {
             return true;
         }
         if(levelReader.getBlockState(pos.east()).is(Blocks.GOLD_ORE)) {

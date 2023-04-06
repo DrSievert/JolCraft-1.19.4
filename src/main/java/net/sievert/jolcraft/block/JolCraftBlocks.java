@@ -33,7 +33,6 @@ public class JolCraftBlocks {
     //Blocks
 
     //Dwarven Metal
-
     public static final RegistryObject<Block> DWARVEN_METAL_DEEPSLATE_ORE = registerBlock("dwarven_metal_deepslate_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE).strength(5.0F, 5.0F).lightLevel((p_50874_) -> {return 3;}).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
 
@@ -68,7 +67,6 @@ public class JolCraftBlocks {
                     return 20;
                 }
             });
-
     public static final RegistryObject<Block> GEM_LOG_BRANCH = registerBlock("gem_log_branch",
             () -> new JolCraftBranchBlock(BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.WOOD).strength(3f).noOcclusion().requiresCorrectToolForDrops()){
                 @Override
@@ -86,8 +84,6 @@ public class JolCraftBlocks {
                     return 20;
                 }
             });
-
-
     public static final RegistryObject<Block> GEM_PLANKS = registerBlock("gem_planks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
                     .strength(5f)) {
@@ -130,13 +126,11 @@ public class JolCraftBlocks {
 
     public static final RegistryObject<Block> ALCHEMIST_WORKBENCH = registerBlock("alchemist_workbench",
             () -> new AlchemistWorkbenchBlock(BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.WOOD).strength(3f).noOcclusion()));
-
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;
     }
-
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return JolCraftItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }

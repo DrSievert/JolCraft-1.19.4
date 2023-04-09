@@ -1,5 +1,6 @@
 package net.sievert.jolcraft.entity.dwarf;
 
+import com.google.common.collect.ImmutableSet;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -14,6 +15,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -22,6 +24,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.npc.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
@@ -42,9 +45,14 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
 import javax.annotation.Nullable;
+import java.util.Set;
 
 
 public class DwarfEntity extends Villager implements GeoEntity {
+
+    private int foodLevel;
+    private static final Set<Item> WANTED_ITEMS = ImmutableSet.of(Items.BREAD, Items.POTATO, Items.CARROT, Items.WHEAT, Items.WHEAT_SEEDS, Items.BEETROOT, Items.BEETROOT_SEEDS);
+
 
     //Basic
 
@@ -56,6 +64,7 @@ public class DwarfEntity extends Villager implements GeoEntity {
         this.setPathfindingMalus(BlockPathTypes.WATER, 8.0F);
 
     }
+
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 40.0D).add(Attributes.KNOCKBACK_RESISTANCE, 0.6).add(Attributes.MOVEMENT_SPEED, (double)0.35F).add(Attributes.ATTACK_DAMAGE, 2.0D).build();
     }
@@ -67,6 +76,7 @@ public class DwarfEntity extends Villager implements GeoEntity {
 
     //Sounds
     @Nullable
+    @Override
     protected SoundEvent getAmbientSound() {
         if (this.isSleeping()) {
             return null;
@@ -74,9 +84,13 @@ public class DwarfEntity extends Villager implements GeoEntity {
             return this.isTrading() ? JolCraftSounds.DWARF_HAGGLE.get() : JolCraftSounds.DWARF_IDLE.get();
         }
     }
+    @Nullable
+    @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
         return JolCraftSounds.DWARF_HIT.get();
     }
+    @Nullable
+    @Override
     protected SoundEvent getDeathSound() {
         return JolCraftSounds.DWARF_DEATH.get();
     }
@@ -92,7 +106,7 @@ public class DwarfEntity extends Villager implements GeoEntity {
     public void playCelebrateSound() {
         this.playSound(JolCraftSounds.DWARF_YES.get(), this.getSoundVolume(), this.getVoicePitch());
     }
-
+    @Nullable
     private void setUnhappy() {
         this.setUnhappyCounter(40);
         if (!this.level.isClientSide()) {
@@ -240,7 +254,70 @@ public class DwarfEntity extends Villager implements GeoEntity {
         this.setTypeVariant(p_30700_.getId() & 255 | p_30701_.getId() & 255);
     }
 
-    //Spawning
+
+
+    //Spawning and Breeding
+
+    public boolean canBreed() {
+        return this.foodLevel + this.countFoodPointsInInventory() >= 12 && !this.isSleeping() && this.getAge() == 0;
+    }
+
+    private int countFoodPointsInInventory() {
+        SimpleContainer simplecontainer = this.getInventory();
+        return FOOD_POINTS.entrySet().stream().mapToInt((p_186300_) -> {
+            return simplecontainer.countItem(p_186300_.getKey()) * p_186300_.getValue();
+        }).sum();
+    }
+
+    private boolean hungry() {
+        return this.foodLevel < 12;
+    }
+
+    private void eatUntilFull() {
+        if (this.hungry() && this.countFoodPointsInInventory() != 0) {
+            for(int i = 0; i < this.getInventory().getContainerSize(); ++i) {
+                ItemStack itemstack = this.getInventory().getItem(i);
+                if (!itemstack.isEmpty()) {
+                    Integer integer = FOOD_POINTS.get(itemstack.getItem());
+                    if (integer != null) {
+                        int j = itemstack.getCount();
+
+                        for(int k = j; k > 0; --k) {
+                            this.foodLevel += integer;
+                            this.getInventory().removeItem(i, 1);
+                            if (!this.hungry()) {
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void eatAndDigestFood() {
+        this.eatUntilFull();
+        this.digestFood(12);
+    }
+
+    private void digestFood(int pQty) {
+        this.foodLevel -= pQty;
+    }
+
+    public boolean wantsToPickUp(ItemStack pStack) {
+        Item item = pStack.getItem();
+        return (WANTED_ITEMS.contains(item) || this.getVillagerData().getProfession().requestedItems().contains(item)) && this.getInventory().canAddItem(pStack);
+    }
+
+    public boolean hasExcessFood() {
+        return this.countFoodPointsInInventory() >= 24;
+    }
+
+    public boolean wantsMoreFood() {
+        return this.countFoodPointsInInventory() < 12;
+    }
+
 
     public static boolean canSpawn(EntityType<DwarfEntity> entityType, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return checkMobSpawnRules(entityType, level, spawnType, pos, random) && pos.getY() < 60 && isBrightEnoughToSpawn(level, pos) && level.getBlockState(pos).is(Blocks.COBBLED_DEEPSLATE);
@@ -264,29 +341,12 @@ public class DwarfEntity extends Villager implements GeoEntity {
     public DwarfEntity getBreedOffspring(ServerLevel level, AgeableMob ageableMob) {
         DwarfEntity entity = (DwarfEntity) ageableMob;
         DwarfEntity entity1 = JolCraftEntities.DWARF.get().create(level);
-        if (entity1 != null) {
-            int i = this.random.nextInt(9);
-            DwarfVariant variant;
-            if (i < 4) {
-                variant = this.getDwarfVariant();
-            } else if (i < 8) {
-                variant = entity.getDwarfVariant();
-            } else {
-                variant = Util.getRandom(DwarfVariant.values(), this.random);
-            }
+        DwarfVariant variant;
+        variant = Util.getRandom(DwarfVariant.values(), this.random);
+        DwarfArmorVariant armorvariant;
+        armorvariant = Util.getRandom(DwarfArmorVariant.values(), this.random);
+        entity1.setVariantAndMarkings(variant, armorvariant);
 
-            int j = this.random.nextInt(5);
-            DwarfArmorVariant armorvariant;
-            if (j < 2) {
-                armorvariant = this.getDwarfArmorVariant();
-            } else if (j < 4) {
-                armorvariant = entity.getDwarfArmorVariant();
-            } else {
-                armorvariant = Util.getRandom(DwarfArmorVariant.values(), this.random);
-            }
-            entity1.setVariantAndMarkings(variant, armorvariant);
-
-        }
         return entity1;
 
     }

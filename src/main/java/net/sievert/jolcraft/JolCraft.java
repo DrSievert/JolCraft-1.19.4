@@ -95,7 +95,12 @@ public class JolCraft
             event.accept(JolCraftBlocks.ALCHEMIST_WORKBENCH);
 
             event.accept(JolCraftBlocks.DWARVEN_METAL_DEEPSLATE_ORE);
+            event.accept(JolCraftBlocks.RAW_DWARVEN_METAL_BLOCK);
+            event.accept(JolCraftBlocks.DWARVEN_METAL_BLOCK);
+
             event.accept(JolCraftItems.UNREFINED_DWARVEN_METAL);
+            event.accept(JolCraftItems.RAW_DWARVEN_METAL);
+            event.accept(JolCraftItems.DWARVEN_METAL_INGOT);
 
             event.accept(JolCraftBlocks.GEM_LOG);
             event.accept(JolCraftBlocks.GEM_WOOD);

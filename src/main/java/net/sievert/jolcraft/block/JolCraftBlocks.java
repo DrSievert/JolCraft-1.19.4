@@ -30,11 +30,15 @@ public class JolCraftBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, JolCraft.MOD_ID);
 
 
-    //Blocks
-
     //Dwarven Metal
     public static final RegistryObject<Block> DWARVEN_METAL_DEEPSLATE_ORE = registerBlock("dwarven_metal_deepslate_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE).strength(5.0F, 5.0F).lightLevel((p_50874_) -> {return 3;}).requiresCorrectToolForDrops(), UniformInt.of(4, 8)));
+
+    public static final RegistryObject<Block> RAW_DWARVEN_METAL_BLOCK = registerBlock("raw_dwarven_metal_block",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(7.0F, 7.0F).lightLevel((p_50874_) -> {return 3;}).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> DWARVEN_METAL_BLOCK = registerBlock("dwarven_metal_block",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(7.0F, 7.0F).lightLevel((p_50874_) -> {return 3;}).requiresCorrectToolForDrops()));
 
     //Gem Tree
     public static final RegistryObject<Block> GEM_LOG = registerBlock("gem_log",
@@ -105,12 +109,10 @@ public class JolCraftBlocks {
 
     public static final RegistryObject<Block> GEM_SAPLING = registerBlock("gem_sapling",
             () -> new SaplingBlock(new GemTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
-
     public static final RegistryObject<Block> DWARVEN_GEM_CLUSTER = registerBlock("dwarven_gem_cluster",
             () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of(Material.AMETHYST).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).requiresCorrectToolForDrops().strength(2F).lightLevel((p_152632_) -> {
                 return 5;
             })));
-
     public static final RegistryObject<Block> DWARVEN_GEM_BLOCK = registerBlock("dwarven_gem_block",
             () -> new AmethystBlock(BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_RED).strength(2F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()));
 

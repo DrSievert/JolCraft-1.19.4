@@ -150,6 +150,16 @@ public class JolCraftEvents {
                         stack, 10, 15, 0.02F));
             }
 
+            //King
+
+            if (event.getType() == JolCraftVillagers.KING.get()) {
+                Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+                ItemStack stack = new ItemStack(Items.EMERALD, 1);
+                trades.get(Apprentice).add((trader, rand) -> new MerchantOffer(
+                        new ItemStack(JolCraftItems.COIN.get(), 1),
+                        stack, 10, 15, 0.02F));
+            }
+
 
 
 
@@ -196,6 +206,7 @@ public class JolCraftEvents {
             event.put(JolCraftEntities.DWARF_SMELTER.get(), DwarfSmelter.setAttributes());
             event.put(JolCraftEntities.DWARF_WARRIOR.get(), DwarfWarrior.setAttributes());
             event.put(JolCraftEntities.DWARF_MINER.get(), DwarfMiner.setAttributes());
+            event.put(JolCraftEntities.DWARF_KING.get(), DwarfKing.setAttributes());
 
         }
     }

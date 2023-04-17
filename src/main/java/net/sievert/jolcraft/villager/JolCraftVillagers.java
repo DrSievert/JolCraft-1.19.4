@@ -100,6 +100,15 @@ public class JolCraftVillagers {
                     x -> x.get() == MINER_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
                     SoundEvents.VILLAGER_WORK_MASON));
 
+    //King
+    public static final RegistryObject<PoiType> KING_POI = POI_TYPES.register("king_poi",
+            () -> new PoiType(ImmutableSet.copyOf(JolCraftBlocks.DWARVEN_GEM_BLOCK.get().getStateDefinition().getPossibleStates()),
+                    1, 1));
+    public static final RegistryObject<VillagerProfession> KING = VILLAGER_PROFESSIONS.register("king",
+            () -> new VillagerProfession("king", x -> x.get() == KING_POI.get(),
+                    x -> x.get() == KING_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
+                    JolCraftSounds.DWARF_YES.get()));
+
 
     public static void register(IEventBus eventBus) {
         POI_TYPES.register(eventBus);

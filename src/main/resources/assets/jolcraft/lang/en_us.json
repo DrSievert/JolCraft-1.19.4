@@ -77,6 +77,10 @@
   "entity.jolcraft.dwarf.jolcraft.miner": "Miner",
   "entity.jolcraft.dwarf_miner.jolcraft.miner": "Miner",
 
+  "entity.minecraft.villager.jolcraft.king": "King",
+  "entity.jolcraft.dwarf.jolcraft.king": "King",
+  "entity.jolcraft.dwarf_king.jolcraft.king": "King",
+
 
   "sounds.jolcraft.dwarf_idle": "Dwarf mumbles",
   "sounds.jolcraft.dwarf_hit": "Dwarf groans",

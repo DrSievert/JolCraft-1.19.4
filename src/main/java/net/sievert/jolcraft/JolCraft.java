@@ -6,6 +6,7 @@ import net.sievert.jolcraft.entity.client.dwarf.artisan.DwarfArtisanRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.blacksmith.DwarfBlacksmithRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.enchanter.DwarfEnchanterRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.DwarfRenderer;
+import net.sievert.jolcraft.entity.client.dwarf.king.DwarfKingRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.miner.DwarfMinerRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.smelter.DwarfSmelterRenderer;
 import net.sievert.jolcraft.entity.client.dwarf.warrior.DwarfWarriorRenderer;
@@ -140,6 +141,8 @@ public class JolCraft
             EntityRenderers.register(JolCraftEntities.DWARF_SMELTER.get(), DwarfSmelterRenderer::new);
             EntityRenderers.register(JolCraftEntities.DWARF_WARRIOR.get(), DwarfWarriorRenderer::new);
             EntityRenderers.register(JolCraftEntities.DWARF_MINER.get(), DwarfMinerRenderer::new);
+            EntityRenderers.register(JolCraftEntities.DWARF_KING.get(), DwarfKingRenderer::new);
+
             ItemBlockRenderTypes.setRenderLayer(JolCraftBlocks.DWARVEN_GEM_CLUSTER.get(), RenderType.cutout());
 
 

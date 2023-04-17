@@ -69,6 +69,12 @@ public class JolCraftEntities {
                     () -> EntityType.Builder.of(DwarfMiner::new, MobCategory.MISC)
                             .sized(1.0f, 1.0f)
                             .build(new ResourceLocation(JolCraft.MOD_ID, "dwarf_miner").toString()));
+
+    public static final RegistryObject<EntityType<DwarfKing>> DWARF_KING =
+            ENTITY_TYPES.register("dwarf_king",
+                    () -> EntityType.Builder.of(DwarfKing::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .build(new ResourceLocation(JolCraft.MOD_ID, "dwarf_king").toString()));
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
